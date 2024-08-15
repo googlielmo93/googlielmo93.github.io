@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincenzo - Ingegnere Informatico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark-mode {
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+        }
+
+        .navbar {
+            background-color: #0077b5;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 1.2em;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #005f8c;
+            border-radius: 5px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            margin: 120px auto 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode .container {
+            background-color: rgba(30, 30, 30, 0.9);
+        }
+
+        .profile-img {
+            width: 30px;
+            vertical-align: middle;
+        }
+
+        .linkedin-icon {
+            width: 20px;
+            vertical-align: middle;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            color: #0077b5;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        a {
+            color: #0077b5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #0077b5;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .dark-mode footer {
+            background-color: #333;
+        }
+
+        .fun-facts {
+            font-style: italic;
+            color: #555;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .language-switch {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .language-switch button {
+            background-color: #0077b5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-switch button:hover {
+            background-color: #1c9eda;
+        }
+
+        .language-switch img {
+            width: 20px;
+            margin-left: 10px;
+        }
+
+        .current-language {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .current-language img {
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        .biography {
+            display: none;
+        }
+
+        .biography.active {
+            display: block;
+        }
+
+        .toggle-dark-mode {
+            background-color: transparent;
+            border: 2px solid #000000;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark-mode .toggle-dark-mode {
+            border-color: #000000;
+            color: #f0f0f0;
+        }
+
+        .toggle-dark-mode:hover {
+            background-color: #000000;
+            color: #fff;
+        }
+
+        .dark-mode .toggle-dark-mode:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        
+        .language-switch {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .language-switch button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .language-switch img {
+            width: 30px;
+            margin: auto;
+        }
+
+        .current-language {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .current-language img {
+            width: 20px;
+        }
+
+        .biography {
+            display: none;
+        }
+
+        .biography.active {
+            display: block;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">index</a>
+        <a href="about.html">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <!-- <button class="toggle-dark-mode" onclick="toggleDarkMode()">Dark Mode</button> -->
+    </div>
+
+    
+    <!-- Sezione About Me -->
+    <div class="container" id="about">
+        <div class="language-switch">
+            <button onclick="switchLanguage()">
+                <img src="./images/translate.png" alt="Switch Language">
+            </button>
+            <!-- 
+            <div id="current-language" class="current-language">
+                <img src="./images/flag_english.png" alt="English">
+            </div> -->
+
+        </div>
+        <h2>About Me</h2>
+
+        <div id="bio-en" class="biography active">
+            <p>
+                Hello! My name is Vincenzo, and I hail from the sunny island of Sicily, where the sun shines as brightly as my passion for technology. My journey into the world of computers began when I was just 16 years old, captivated by the endless possibilities that the digital world offered. Ever since then, I've been on a relentless pursuit to master the art of software engineering.
+            </p>
+            <p>
+                Growing up in Sicily, I was surrounded by the rich culture, beautiful landscapes, and, of course, the delicious food that our island is famous for. But beyond the sunshine and the sea, my true love was for computers. I spent countless hours tinkering with code, breaking things apart, and putting them back together just to see how they worked. My love for hi-tech has only grown stronger over the years.
+            </p>
+            <p>
+                Recently, my interests have started to shift towards the exciting fields of Artificial Intelligence and Computer Vision. Even though I am still in the early stages of learning, I am putting my heart and soul into mastering these disciplines. There's something incredibly fascinating about teaching machines to see and understand the world as we do. My goal is to not only complete my university studies but to also become an expert in AI, creating something new and wonderful that can help people in their everyday lives.
+            </p>
+            <p>
+                I know the road ahead won't be easy, and there will be plenty of challenges along the way. But as they say, "If you're not struggling, you're not growing." With determination, hard work, and a little bit of Sicilian stubbornness, I am confident that I will reach my goals. After all, the sun always shines after the storm, right?
+            </p>
+        </div>
+
+        <div id="bio-it" class="biography">
+            <p>
+                Ciao! Mi chiamo Vincenzo e vengo dalla soleggiata isola della Sicilia, dove il sole splende tanto quanto la mia passione per la tecnologia. Il mio viaggio nel mondo dei computer è iniziato quando avevo solo 16 anni, affascinato dalle infinite possibilità che il mondo digitale offriva. Da allora, sono in una ricerca incessante per padroneggiare l'arte dell'ingegneria del software.
+            </p>
+            <p>
+                Crescendo in Sicilia, sono stato circondato dalla ricca cultura, dai bellissimi paesaggi e, naturalmente, dal cibo delizioso per cui la nostra isola è famosa. Ma al di là del sole e del mare, il mio vero amore era per i computer. Ho passato innumerevoli ore a trafficare con il codice, smontare le cose e rimetterle insieme solo per vedere come funzionavano. Il mio amore per l'high-tech è cresciuto sempre di più negli anni.
+            </p>
+            <p>
+                Recentemente, i miei interessi hanno iniziato a orientarsi verso i campi entusiasmanti dell'intelligenza artificiale e della computer vision. Anche se sono ancora agli inizi, sto mettendo tutto me stesso per padroneggiare queste discipline. C'è qualcosa di incredibilmente affascinante nell'insegnare alle macchine a vedere e capire il mondo come lo vediamo noi. Il mio obiettivo è non solo completare i miei studi universitari, ma anche diventare un esperto in AI, creando qualcosa di nuovo e meraviglioso che possa aiutare le persone nella vita di tutti i giorni.
+            </p>
+            <p>
+                So che la strada davanti a me non sar&agrave; facile e ci saranno molte sfide lungo il percorso. Ma come si dice, "Se non stai lottando, non stai crescendo." Con determinazione, duro lavoro e un pizzico di testardaggine siciliana, sono fiducioso che raggiungerò i miei obiettivi. Dopotutto, il sole splende sempre dopo la tempesta, giusto?
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Vincenzo Guglielmo | Powered by Code and Coffee ☕
+    </footer>
+    
+    <script>
+        function switchLanguage() {
+            var bioEn = document.getElementById('bio-en');
+            var bioIt = document.getElementById('bio-it');
+            var currentLanguage = document.getElementById('current-language');
+            
+            bioEn.classList.toggle('active');
+            bioIt.classList.toggle('active');
+            
+            // if (bioEn.classList.contains('active')) {
+            //     currentLanguage.innerHTML = '<img src="./images/flag_english.png" alt="English">';
+            // } else {
+            //     currentLanguage.innerHTML = '<img src="./images/flag_italy.jpg" alt="Italy">';
+            // }
+        }
+
+        // function toggleDarkMode() {
+        //     document.body.classList.toggle('dark-mode');
+        // }
+
+    </script>
+
+</body>
+</html>

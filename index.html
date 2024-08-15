@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincenzo - Ingegnere Informatico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark-mode {
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+        }
+
+        .navbar {
+            background-color: #0077b5;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            font-size: 1.2em;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #005f8c;
+            border-radius: 5px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            margin: 120px auto 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark-mode .container {
+            background-color: rgba(30, 30, 30, 0.9);
+        }
+
+        .profile-img {
+            width: 30px;
+            vertical-align: baseline;
+        }
+
+        .linkedin-icon {
+            width: 20px;
+            vertical-align:baseline;
+            margin-left: -0.18em;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            color: #0077b5;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        a {
+            color: #0077b5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #0077b5;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .dark-mode footer {
+            background-color: #333;
+        }
+
+        .fun-facts {
+            font-style: italic;
+            color: #555;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .language-switch {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .language-switch button {
+            background-color: #0077b5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-switch button:hover {
+            background-color: #005f8c;
+        }
+
+        .language-switch img {
+            width: 20px;
+            margin-left: 10px;
+        }
+
+        .current-language {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .current-language img {
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        .intro {
+            display: none;
+        }
+
+        .intro.active {
+            display: block;
+        }
+
+        .toggle-dark-mode {
+            background-color: transparent;
+            border: 2px solid #000000;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dark-mode .toggle-dark-mode {
+            border-color: #000000;
+            color: #f0f0f0;
+        }
+
+        .toggle-dark-mode:hover {
+            background-color: #000000;
+            color: #fff;
+        }
+
+        .dark-mode .toggle-dark-mode:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+         
+        .language-switch {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .language-switch button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .language-switch img {
+            width: 30px;
+            margin: auto;
+        }
+
+        .current-language {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .current-language img {
+            width: 20px;
+        }
+
+        .intro {
+            display: none;
+        }
+
+        .intro.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <!-- <button class="toggle-dark-mode" onclick="toggleDarkMode()">Dark Mode</button> -->
+    </div>
+
+    <!-- Sezione Home -->
+    <div class="container" id="home">
+
+        <div class="language-switch">
+            <button onclick="switchLanguage()">
+                <img src="./images/translate.png" alt="Switch Language">
+            </button>
+
+        </div>
+
+        <div id="intro-en" class="intro active">
+            <h1>Hi there! I'm <a href="https://www.linkedin.com/in/vincenzoguglielmo/">Vincenzo</a> <img src="https://user-images.githubusercontent.com/10675526/219479446-eb143130-d3ff-43ad-806a-3868e6e0f9ce.png" alt="LinkedIn" class="profile-img"></h1>
+            <p>
+                I am a software engineer with a constant desire to learn new technologies, and new ways of banging my head on the keyboard when the code doesn't work... 😂😂😂
+            </p>
+            <p>
+                🔗 For more and to connect with me you can visit my <a href="https://www.linkedin.com/in/vincenzoguglielmo/">Linked <img src="https://user-images.githubusercontent.com/10675526/219473949-82495b3f-72e6-4ad0-a7b3-e850114306a5.svg" alt="LinkedIn" class="linkedin-icon"></a> profile.
+            </p>
+        </div>
+
+        <div id="intro-it" class="intro">
+            <h1>Ciao a tutti! Sono <a href="https://www.linkedin.com/in/vincenzoguglielmo/">Vincenzo</a> <img src="https://user-images.githubusercontent.com/10675526/219479446-eb143130-d3ff-43ad-806a-3868e6e0f9ce.png" alt="LinkedIn" class="profile-img"></h1>
+            <p>
+                Sono un ingegnere informatico con la costante voglia di imparare nuove tecnologie e di nuovi modi di sbattere la testa sulla tastiera quando il codice non funziona... 😂😂😂
+            </p>
+            <p>
+                🔗 Per saperne di pi&ugrave; e per collegarvi con me potete visitare il mio profilo <a href="https://www.linkedin.com/in/vincenzoguglielmo/">Linked <img src="https://user-images.githubusercontent.com/10675526/219473949-82495b3f-72e6-4ad0-a7b3-e850114306a5.svg" alt="LinkedIn" class="linkedin-icon"></a>.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2024 Vincenzo Guglielmo | Powered by Code and Coffee ☕
+    </footer>
+
+    <script>
+
+        function switchLanguage() {
+            var bioEn = document.getElementById('intro-en');
+            var bioIt = document.getElementById('intro-it');
+            var currentLanguage = document.getElementById('current-language');
+            
+            bioEn.classList.toggle('active');
+            bioIt.classList.toggle('active');
+        }
+        
+        //  function toggleDarkMode() {
+        //     document.body.classList.toggle('dark-mode');
+        // }
+    </script>
+</body>
+</html>
